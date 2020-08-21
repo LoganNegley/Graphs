@@ -32,13 +32,13 @@ class Graph:
         beginning from starting_vertex.
         """
 
-        queue = []           # Create empty queue and enqueue the starting_vertex
+        queue = Queue()           # Create empty queue and enqueue the starting_vertex
         visited = set()        # Create an empty set to track visited verticies
         
-        queue.append(starting_vertex)           # Add starting vertex to queue
+        queue.enqueue(starting_vertex)           # Add starting vertex to queue
 
-        while len(queue) > 0:               # as long as queue is not empty run code
-            popped_vertex = queue.pop()         #Take current vertex and pop off the queue
+        while queue.size() > 0:               # as long as queue is not empty run code
+            popped_vertex = queue.dequeue()         #Take current vertex and pop off the queue
             if popped_vertex not in visited:      #check if it has been visisted if not print it
                 print(popped_vertex)
                 visited.add(popped_vertex)       #add current vertex to visisted set
@@ -47,7 +47,7 @@ class Graph:
 
             for n in vertex_neighbors:             #Go through each neighbor
                 if n not in visited:      #if neighbor not in visited add it to the queue and we keep going
-                    queue.append(n)
+                    queue.enqueue(n)
 
     def dft(self, starting_vertex):
         """
@@ -55,6 +55,16 @@ class Graph:
         beginning from starting_vertex.
         """
         pass  # TODO
+
+
+
+
+
+
+
+
+
+
 
     def dft_recursive(self, starting_vertex):
         """
