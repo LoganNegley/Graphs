@@ -128,23 +128,13 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
-
-    def dfs_recursive(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
-
-        This should be done using recursion.
-        """
         stack = Stack()
         visited = set()
         
-        queue.enqueue([starting_vertex])
+        stack.push([starting_vertex])
 
-        while queue.size() > 0:
-            path = queue.dequeue()
+        while stack.size() > 0:
+            path = stack.pop()
             vertex = path[len(path) -1]
 
             if vertex not in visited:
@@ -157,7 +147,23 @@ class Graph:
             for n in vertex_neighbors:
                 copy = list(path)
                 copy.append(n)
-                queue.enqueue(copy)
+                stack.push(copy)
+
+
+
+
+
+
+
+    def dfs_recursive(self, starting_vertex, destination_vertex):
+        """
+        Return a list containing a path from
+        starting_vertex to destination_vertex in
+        depth-first order.
+
+        This should be done using recursion.
+        """
+        pass #TODO
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
