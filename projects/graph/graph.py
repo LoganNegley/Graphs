@@ -30,16 +30,24 @@ class Graph:
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
-
-        Create empty queue and enqueue the starting_vertex
-        Create an empty set to track visited verticies
         """
-        queue = []
-        visited = set()
-        queue.append(starting_vertex)
 
-        while queue.length() > 0:
-            popped_vertex = queue.pop()
+        queue = []           # Create empty queue and enqueue the starting_vertex
+        visited = set()        # Create an empty set to track visited verticies
+        
+        queue.append(starting_vertex)           # Add starting vertex to queue
+
+        while queue.length() > 0:               # as long as queue is not empty run code
+            popped_vertex = queue.pop()         #Take current vertex and pop off the queue
+            if popped_vertex not in visited:      #check if it has been visisted if not print it
+                print(popped_vertex)
+                visited.add(popped_vertex)       #add current vertex to visisted set
+
+                vertex_neighbors = self.get_neighbors(popped_vertex)      #use get neighbors func to get current vertex neighbors
+
+                for n in neighbors:             #Go through each neighbor
+                    if n is not in visited:      #if neighbor not in visited add it to the queue and we keep going
+                        queue.append(n)
 
 
 
