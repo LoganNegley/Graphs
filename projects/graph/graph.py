@@ -1,6 +1,3 @@
-"""
-Simple graph implementation
-"""
 from util import Stack, Queue  # These may come in handy
 
 class Graph:
@@ -13,26 +10,41 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        if vertex_id is not in self.vertices:
+            self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
 
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        return self.vertices[vertex_id]
 
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
+
+        Create empty queue and enqueue the starting_vertex
+        Create an empty set to track visited verticies
         """
-        pass  # TODO
+        queue = []
+        visited = set()
+        queue.append(starting_vertex)
+
+        while queue.length() > 0:
+            popped_vertex = queue.pop()
+
+
+
+
+
 
     def dft(self, starting_vertex):
         """
