@@ -57,7 +57,7 @@ class Graph:
         visited = set()
 
         stack.push(starting_vertex)
-        while stack.size > 0:
+        while stack.size() > 0:
             popped_vertex = stack.pop()
             if popped_vertex not in visited:
                 print(popped_vertex)
@@ -83,25 +83,44 @@ class Graph:
         Return a list containing the shortest path from
         starting_vertex to destination_vertex in
         breath-first order.
+
+        # Create an empty queue and enqueue the PATH TO starting_vertex 
+        # Create an empty set to track visited verticies
+        # while the queue is not empty:
+            # get current vertex PATH (dequeue from queue)
+            # set the current vertex to the LAST element of the PATH
+            # Check if the current vertex has not been visited:
+                
+                # CHECK IF THE CURRENT VERTEX IS DESTINATION
+                # IF IT IS, STOP AND RETURN
+                # Mark the current vertex as visited
+                    # Add the current vertex to a visited_set
+                # Queue up NEW paths with each neighbor:
+                    # take current path
+                    # append the neighbor to it
+                    # queue up NEW path
+
         # """
-        #  queue = Queue()           # Create empty queue and enqueue the PATH TO starting_vertex
-        # visited = set()        # Create an empty set to track visited verticies
+        queue = Queue()
+        visited = set()
         
-        # queue.enqueue(starting_vertex)           # Add starting vertex to queue
+        queue.enqueue([starting_vertex])
 
-        # while queue.size() > 0:               # as long as queue is not empty run code
-        #     popped_vertex = queue.dequeue()         #Take current vertex and pop off the queue
-        #     if popped_vertex not in visited:      #check if it has been visisted if not print it
-        #         if popped_vertex = destination_vertex:
-        #             return popped
-        #         else:
-        #             visited.add(popped_vertex)       #add current vertex to visisted set
+        while queue.size() > 0:
+            path = queue.dequeue()
+            vertex = path[len(path) -1]
 
-        #     vertex_neighbors = self.get_neighbors(popped_vertex)      #use get neighbors func to get current vertex neighbors
+            if vertex not in visited:
+                if vertex == destination_vertex:
+                    return path
+                visited.add(vertex)
 
-        #     for n in vertex_neighbors:             #Go through each neighbor
-        #         if n not in visited:      #if neighbor not in visited add it to the queue and we keep going
-        #             queue.enqueue(n)
+            vertex_neighbors = self.get_neighbors(vertex)
+
+            for n in vertex_neighbors:
+                copy = list(path)
+                copy.append(n)
+                queue.enqueue(copy)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -119,7 +138,26 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        stack = Stack()
+        visited = set()
+        
+        queue.enqueue([starting_vertex])
+
+        while queue.size() > 0:
+            path = queue.dequeue()
+            vertex = path[len(path) -1]
+
+            if vertex not in visited:
+                if vertex == destination_vertex:
+                    return path
+                visited.add(vertex)
+
+            vertex_neighbors = self.get_neighbors(vertex)
+
+            for n in vertex_neighbors:
+                copy = list(path)
+                copy.append(n)
+                queue.enqueue(copy)
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
