@@ -31,7 +31,6 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-
         queue = Queue()           # Create empty queue and enqueue the starting_vertex
         visited = set()        # Create an empty set to track visited verticies
         
@@ -54,17 +53,21 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        stack = Stack()
+        visited = set()
 
+        stack.push(starting_vertex)
+        while stack.size > 0:
+            popped_vertex = stack.pop()
+            if popped_vertex not in visited:
+                print(popped_vertex)
+                visited.add(popped_vertex)
 
+                vertex_neighbors = self.get_neighbors(popped_vertex)
 
-
-
-
-
-
-
-
+                for n in vertex_neighbors:
+                    if n not in visited:
+                        stack.push(n)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -80,8 +83,25 @@ class Graph:
         Return a list containing the shortest path from
         starting_vertex to destination_vertex in
         breath-first order.
-        """
-        pass  # TODO
+        # """
+        #  queue = Queue()           # Create empty queue and enqueue the PATH TO starting_vertex
+        # visited = set()        # Create an empty set to track visited verticies
+        
+        # queue.enqueue(starting_vertex)           # Add starting vertex to queue
+
+        # while queue.size() > 0:               # as long as queue is not empty run code
+        #     popped_vertex = queue.dequeue()         #Take current vertex and pop off the queue
+        #     if popped_vertex not in visited:      #check if it has been visisted if not print it
+        #         if popped_vertex = destination_vertex:
+        #             return popped
+        #         else:
+        #             visited.add(popped_vertex)       #add current vertex to visisted set
+
+        #     vertex_neighbors = self.get_neighbors(popped_vertex)      #use get neighbors func to get current vertex neighbors
+
+        #     for n in vertex_neighbors:             #Go through each neighbor
+        #         if n not in visited:      #if neighbor not in visited add it to the queue and we keep going
+        #             queue.enqueue(n)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
