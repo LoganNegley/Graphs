@@ -22,4 +22,11 @@ from util import Queue
 
 
 def earliest_ancestor(ancestors, starting_node):
-    pass
+    graph = Graph()
+
+    for person in ancestors:
+        graph.add_vertex(person[0])
+        graph.add_vertex(person[1])
+        graph.add_edge(person[0], person[1])
+
+    print(graph)
