@@ -16,6 +16,10 @@ class Graph:
     def __init__(self):
         self.vertices = {}
 
+    def __str__(self):
+        return f'{self.vertices}'
+
+
     def add_vertex(self, vertex_id):
         """
         Add a vertex to the graph.
@@ -36,7 +40,7 @@ class Graph:
         """
         return self.vertices[vertex_id]
 
-        
+######### bft func to find the last known ancestor #########
 
     def bft(self, starting_vertex):
         """
