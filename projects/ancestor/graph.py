@@ -23,3 +23,25 @@ class Graph:
         Get all neighbors (edges) of a vertex.
         """
         return self.vertices[vertex_id]
+
+            def bft(self, starting_vertex):
+        """
+        Print each vertex in breadth-first order
+        beginning from starting_vertex.
+        """
+        queue = Queue()           # Create empty queue and enqueue the starting_vertex
+        visited = set()        # Create an empty set to track visited verticies
+        
+        queue.enqueue(starting_vertex)           # Add starting vertex to queue
+
+        while queue.size() > 0:               # as long as queue is not empty run code
+            popped_vertex = queue.dequeue()         #Take current vertex and pop off the queue
+            if popped_vertex not in visited:      #check if it has been visisted if not print it
+                print(popped_vertex)
+                visited.add(popped_vertex)       #add current vertex to visisted set
+
+            vertex_neighbors = self.get_neighbors(popped_vertex)      #use get neighbors func to get current vertex neighbors
+
+            for n in vertex_neighbors:             #Go through each neighbor
+                if n not in visited:      #if neighbor not in visited add it to the queue and we keep going
+                    queue.enqueue(n)
