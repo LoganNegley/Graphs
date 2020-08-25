@@ -18,7 +18,6 @@
 # Add starting node to visited set
 
 from graph import Graph
-from util import Queue
 
 
 def earliest_ancestor(ancestors, starting_node):
@@ -30,3 +29,6 @@ def earliest_ancestor(ancestors, starting_node):
         graph.add_edge(person[0], person[1])
 
     print(graph)
+
+
+earliest_ancestors([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)])
