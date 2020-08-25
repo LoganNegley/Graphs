@@ -69,14 +69,7 @@ class Graph:
                     if n not in visited:
                         stack.push(n)
 
-    def dft_recursive(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-
-        This should be done using recursion.
-        """
-        pass  # TODO
+ 
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -150,10 +143,14 @@ class Graph:
                 stack.push(copy)
 
 
+    def dft_recursive(self, starting_vertex):
+            """
+            Print each vertex in depth-first order
+            beginning from starting_vertex.
 
-
-
-
+            This should be done using recursion.
+            """
+            pass  # TODO
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
