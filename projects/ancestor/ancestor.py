@@ -26,7 +26,10 @@ def earliest_ancestor(ancestors, starting_node):
     for person in ancestors:
         graph.add_vertex(person[0])
         graph.add_vertex(person[1])
-        graph.add_edge(person[0], person[1])
+        graph.add_edge(person[1], person[0])
+        
+    return graph.bft(starting_node)
+
 
 
 ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
