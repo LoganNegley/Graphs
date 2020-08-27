@@ -63,3 +63,7 @@ class Graph:
             for n in vertex_neighbors:             #Go through each neighbor
                 if n not in visited:      #if neighbor not in visited add it to the queue and we keep going
                     queue.enqueue(n)
+
+        if popped_vertex == starting_vertex:
+            return -1
+        return popped_vertex
